@@ -83,89 +83,96 @@ string timeConversion(string s) {
 
 }
 
+int getGcd(int a, int b)
+{
+
+	int temp = 0;
+
+	while (b > 0) 
+	{
+		temp = b;
+
+		b = a % b;
+
+		a = temp;
+	
+	}
+
+	return a;
+
+
+}
+
+int getLcm(int a, int b)
+{
+	return (a * b) / getGcd(a, b);
+}
+
 
 int getTotalX(vector<int> a, vector<int> b) {
 
-	vector<int> factors;
-	vector<int> gcd;
+	int count = 0;
 
-	if ((int)a.size() > 1)
+
+	int lcm = a[0];
+	int gcd = b[0];
+
+	for (int i = 1; i < (int)a.size(); i++)
 	{
-		for (int i = *max_element(a.begin(), a.end()); i <= *min_element(b.begin(), b.end()); i++)
-		{
-			bool isDivideEvenly = true;
-
-
-			for (int x = 0; x < (int)a.size(); x++) 
-			{
-				if ((i % a[x] != 0))
-				{
-					isDivideEvenly = false;
-				}
-			}
-
-			if (isDivideEvenly)
-			{
-				factors.push_back(i);
-			}
-		}
+		lcm = getLcm(lcm, a[i]);
 	}
-	else
-	{
-		if (!a.empty())
-		{
-			factors.push_back(a[0]);
-		}
-	}
-	
-	for (int i = *max_element(b.begin(), b.end()); i >= 1; i--)
-	{
-		for (int x = 0; x < (int)b.size(); x++)
-		{
-			if ((b[x] % i) == 0) 
-			{
-				gcd.push_back(i);
-			}
-		}
-	}
-			
-	/** /
-	for (int i = 0; i < (int)factors.size(); i++)
-	{
-		for (int x = 0; x < (int)gcd.size(); x++)
-		{
-			cout << "GCD " << gcd[x] << endl;
 
-			if ((gcd[x] % factors[i]) != 0)
-			{
-				gcd.erase(gcd.begin() + x);
-			}
-		}
-	}
-	/**/
-
-
-	for (int i = 0; i < (int)gcd.size(); i++)
+	for (int i = 0; i < (int)b.size(); i++) 
 	{
-		for (int x = 0; x < (int)factors.size(); x++)
+		gcd = getGcd(gcd, b[i]);
+	}
+
+	for (int i = lcm; i <= gcd; i+=lcm) 
+	{
+		if ((gcd % i) == 0) 
 		{
-			if ((gcd[i] % factors[x]) == 0) 
-			{
-				gcd.erase(gcd.begin() + i);
-			}
+			count++;
 		}
 	}
 
-
-	return gcd.empty() ? 0 : (int)gcd.size();
+	return count;
 
 }
+
+vector<int> breakingRecords(vector<int> scores) {
+
+	int min = scores[0];
+	int max = scores[0];
+
+	vector<int> beats{ 0, 0 };
+
+	for (int i = 0; i < (int)scores.size(); i++) 
+	{
+		if (scores[i] < min)
+		{
+			min = scores[i];
+			beats[1]++;
+		}
+		else if (scores[i] > max) 
+		{
+			max = scores[i];
+			beats[0]++;
+		}
+
+	}
+
+	return beats;
+
+
+}
+
+
 
 int main()
 {
 
-	vector<int> a { 3, 4 };
-	vector<int> b { 24, 48 };		
+	vector<int> a { 1 };
+	vector<int> b { 72, 48 };		
 
 	int result = getTotalX(a, b);
 
