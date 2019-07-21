@@ -167,6 +167,42 @@ vector<int> breakingRecords(vector<int> scores) {
 }
 
 
+void lcs(std::string journal, std::string scroll) 
+{
+	std::string tempSpellJournal = journal;
+
+	std::string tempSpellScroll = scroll;
+
+	std::vector<std::vector<int>> matrix(tempSpellJournal.length() + 1, std::vector<int>(tempSpellScroll.length() + 1, 0));
+	
+	//if(tempSpellJournal > tempSpellScroll)
+	//{
+		//tempSpellJournal = tempSpellScroll;
+		//tempSpellScroll = SpellJournal::read;
+	//}
+
+
+	for (int i = 1; i <= tempSpellJournal.length(); i++)
+	{
+	
+		for (int j = 1; j <= tempSpellScroll.length(); j++)
+		{
+
+			if (tempSpellJournal[i - 1] == tempSpellScroll[j - 1])
+			{
+				matrix[i][j] = matrix[i - 1][j - 1] + 1;
+			}
+			else
+			{
+				matrix[i][j] = max(matrix[i][j - 1], matrix[i - 1][j]);
+			}
+		}
+	}
+
+	std::cout << matrix[tempSpellJournal.length()][tempSpellScroll.length()] << std::endl;
+
+}
+
 
 int main()
 {
@@ -174,9 +210,28 @@ int main()
 	vector<int> a { 1 };
 	vector<int> b { 72, 48 };		
 
-	int result = getTotalX(a, b);
+	//int result = getTotalX(a, b);
 
-	cout << result << endl;
+	//cout << result << endl;
+
+	std::string journal;
+	std::string scroll;
+
+
+
+
+	while (true) 
+	{
+	
+		std::cin >> journal >> scroll;
+
+		if (std::cin.fail()) 
+		{
+			break;
+		}
+		
+		lcs(journal, scroll);
+	}
 
 
 	/** /

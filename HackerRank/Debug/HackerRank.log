@@ -1,2 +1,4 @@
 ﻿  HackerRank.cpp
-  HackerRank.vcxproj -> D:\Projects\HackerRank\Debug\HackerRank.exe
+D:\Projects\hackerrank\HackerRank\HackerRank.cpp(179): warning C4018: '<': signed/unsigned mismatch
+D:\Projects\hackerrank\HackerRank\HackerRank.cpp(182): warning C4018: '<': signed/unsigned mismatch
+  HackerRank.vcxproj -> D:\Projects\hackerrank\HackerRank\Debug\HackerRank.exe
