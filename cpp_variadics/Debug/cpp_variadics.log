@@ -1,0 +1,5 @@
+﻿  cpp_variadics.cpp
+D:\Projects\cpp_variadics\cpp_variadics.cpp(80): warning C4101: 'p': unreferenced local variable
+D:\Projects\cpp_variadics\cpp_variadics.cpp(80): warning C4101: 's': unreferenced local variable
+D:\Projects\cpp_variadics\cpp_variadics.cpp(80): warning C4101: 'n': unreferenced local variable
+  cpp_variadics.vcxproj -> D:\Projects\cpp_variadics\Debug\cpp_variadics.exe
