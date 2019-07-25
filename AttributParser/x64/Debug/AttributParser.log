@@ -1,0 +1,3 @@
+﻿  AttributParser.cpp
+D:\yukihime-projects\cpp\hackerrank\AttributParser\AttributParser.cpp(36,39): warning C4267:  'initializing': conversion from 'size_t' to 'int', possible loss of data
+  AttributParser.vcxproj -> D:\yukihime-projects\cpp\hackerrank\AttributParser\x64\Debug\AttributParser.exe
